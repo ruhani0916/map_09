@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Based Access</title>
+    <style>
+       
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    
+    function promptLocation() {
+        const location = prompt("Please enter your location (e.g., Punjab, Haryana, Chandigarh):");
+        if (location) {
+            handleLocation(location.trim().toLowerCase());
+        }
+    }
+
+  
+    function handleLocation(location) {
+        const validLocations = {
+            "punjab": "https://www.google.com/maps/place/Punjab,+India",
+            "haryana": "https://www.google.com/maps/place/Haryana,+India",
+            "chandigarh": "https://www.google.com/maps/place/Chandigarh,+India"
+        };
+
+        if (validLocations.hasOwnProperty(location)) {
+            const username = prompt("Please enter your username:");
+            if (username) {
+                const password = prompt("Please enter your password:");
+                if (password) {
+                    handleCredentials(username, password, validLocations[location]);
+                }
+            }
+        } else {
+            alert("Access Denied");
+        }
+    }
+
+   
+    function handleCredentials(username, password, mapUrl) {
+        const correctUsername = "Ruhani09";
+        const correctPassword = "Ruhani09";
+        
+        if (username === correctUsername && password === correctPassword) {
+            window.location.href = mapUrl;
+        } else {
+            alert("Wrong credentials");
+        }
+    }
+
+   
+    window.onload = promptLocation;
+</script>
+
+</body>
+</html>
